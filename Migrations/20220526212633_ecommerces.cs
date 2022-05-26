@@ -4,7 +4,7 @@
 
 namespace API2.Migrations
 {
-    public partial class crear : Migration
+    public partial class ecommerces : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

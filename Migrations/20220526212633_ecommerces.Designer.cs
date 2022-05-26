@@ -11,8 +11,8 @@ using Product.Data;
 namespace API2.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220526211559_ecommerce")]
-    partial class ecommerce
+    [Migration("20220526212633_ecommerces")]
+    partial class ecommerces
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
