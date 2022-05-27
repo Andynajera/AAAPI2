@@ -21,7 +21,7 @@ namespace API2.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CarritoItem.CarritoItems", b =>
+            modelBuilder.Entity("CarritItem.CarritoItems", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -29,15 +29,12 @@ namespace API2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<int>("IdCarrito")
-                        .HasColumnType("int");
-
                     b.Property<string>("cantidad")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.ToTable("CarritoItem");
+                    b.ToTable("CarritItem");
                 });
 
             modelBuilder.Entity("OrderItem.OrderItems", b =>
@@ -56,7 +53,7 @@ namespace API2.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("OrdeItem");
                 });
 
             modelBuilder.Entity("Product.ProductItems", b =>
@@ -73,9 +70,6 @@ namespace API2.Migrations
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("image")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
@@ -84,7 +78,7 @@ namespace API2.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("ProductI");
+                    b.ToTable("ProducItem");
                 });
 #pragma warning restore 612, 618
         }

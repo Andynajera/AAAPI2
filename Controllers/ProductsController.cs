@@ -24,7 +24,7 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public ActionResult<List<ProductItems>> Get()
     {
-        List<ProductItems> product = _context.ProductI.ToList();
+        List<ProductItems> product = _context.ProducItem.ToList();
         return product == null? NoContent()
             : Ok(product);
     }
@@ -34,12 +34,12 @@ public class ProductsController : ControllerBase
     [HttpPost]
     public ActionResult<ProductItems> Post([FromBody] ProductItems product)
     {
-         ProductItems existingProductItems= _context.ProductI.Find(product.id);
+         ProductItems existingProductItems= _context.ProducItem.Find(product.id);
         if (existingProductItems != null)
         {
             return Conflict("Ya existe un elemento ");
         }
-        _context.ProductI.Add(product);
+        _context.ProducItem.Add(product);
         _context.SaveChanges();
 
         string resourceUrl = Request.Path.ToString() + "/" + product.id;
@@ -49,7 +49,7 @@ public class ProductsController : ControllerBase
     [HttpPut("{id:int}")]
     public ActionResult<ProductItems> Update([FromBody] ProductItems product, int id)
     {
-        ProductItems productItemToUpdate = _context.ProductI.Find(id);
+        ProductItems productItemToUpdate = _context.ProducItem.Find(id);
         if (productItemToUpdate == null)
         {
             return NotFound("Elemento del producto no encontrado");
@@ -64,12 +64,12 @@ public class ProductsController : ControllerBase
         [HttpDelete("{id:int}")]
     public ActionResult Delete(int id)
     {
-        ProductItems productItemToDelete = _context.ProductI.Find(id);
+        ProductItems productItemToDelete = _context.ProducItem.Find(id);
         if (productItemToDelete == null)
         {
             return NotFound("Elemento del producto no encontrado");
         }
-        _context.ProductI.Remove(productItemToDelete);
+        _context.ProducItem.Remove(productItemToDelete);
         _context.SaveChanges();
         return Ok(productItemToDelete);
     }

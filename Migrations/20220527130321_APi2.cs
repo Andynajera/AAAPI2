@@ -4,26 +4,25 @@
 
 namespace API2.Migrations
 {
-    public partial class ecommerces : Migration
+    public partial class APi2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CarritoItem",
+                name: "CarritItem",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    cantidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdCarrito = table.Column<int>(type: "int", nullable: false)
+                    cantidad = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CarritoItem", x => x.id);
+                    table.PrimaryKey("PK_CarritItem", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItem",
+                name: "OrdeItem",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -33,11 +32,11 @@ namespace API2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItem", x => x.id);
+                    table.PrimaryKey("PK_OrdeItem", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductI",
+                name: "ProducItem",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -45,25 +44,24 @@ namespace API2.Migrations
                     name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     category = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    price = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    image = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    price = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductI", x => x.id);
+                    table.PrimaryKey("PK_ProducItem", x => x.id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CarritoItem");
+                name: "CarritItem");
 
             migrationBuilder.DropTable(
-                name: "OrderItem");
+                name: "OrdeItem");
 
             migrationBuilder.DropTable(
-                name: "ProductI");
+                name: "ProducItem");
         }
     }
 }

@@ -24,7 +24,7 @@ public class OrdersController : ControllerBase
     [HttpGet]
     public ActionResult<List<OrderItems>> Get()
     {
-        List<OrderItems> product = _context.OrderItem.ToList();
+        List<OrderItems> product = _context.OrdeItem.ToList();
         return product == null? NoContent()
             : Ok(product);
     }
@@ -33,12 +33,12 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public ActionResult<OrderItems> Post([FromBody] OrderItems product)
     {
-         OrderItems existingOrderItems= _context.OrderItem.Find(product.id);
+         OrderItems existingOrderItems= _context.OrdeItem.Find(product.id);
         if (existingOrderItems != null)
         {
             return Conflict("Ya existe un elemento ");
         }
-        _context.OrderItem.Add(product);
+        _context.OrdeItem.Add(product);
         _context.SaveChanges();
 
         string resourceUrl = Request.Path.ToString() + "/" + product.id;
@@ -48,7 +48,7 @@ public class OrdersController : ControllerBase
     [HttpPut("{id:int}")]
     public ActionResult<OrderItems> Update([FromBody] OrderItems product, int id)
     {
-        OrderItems orderItemToUpdate = _context.OrderItem.Find(id);
+        OrderItems orderItemToUpdate = _context.OrdeItem.Find(id);
         if (orderItemToUpdate == null)
         {
             return NotFound("Elemento del order no encontrado");
@@ -63,12 +63,12 @@ public class OrdersController : ControllerBase
         [HttpDelete("{id:int}")]
     public ActionResult Delete(int id)
     {
-        OrderItems orderItemToDelete = _context.OrderItem.Find(id);
+        OrderItems orderItemToDelete = _context.OrdeItem.Find(id);
         if (orderItemToDelete == null)
         {
             return NotFound("Elemento del order no encontrado");
         }
-        _context.OrderItem.Remove(orderItemToDelete);
+        _context.OrdeItem.Remove(orderItemToDelete);
         _context.SaveChanges();
         return Ok(orderItemToDelete);
     }
