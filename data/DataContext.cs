@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Product;
-using CarritItem;
-using OrderItem;
+using Models;
+
 namespace Product.Data
 {
 
@@ -11,8 +10,9 @@ namespace Product.Data
             : base(options)
         {
         }
-        public DbSet<ProductItems>? ProducItem { get; set; }
-        public DbSet<CarritoItems>? CarritItem { get; set; }
-        public DbSet<OrderItems>? OrdeItem { get; set; }
+        public DbSet<ProductItem>? ProductItems { get; set; }
+        public DbSet<CarritoItem>? CarritoItems { get; set; }
+        public DbSet<Order>? Orders{ get; set; }
+        public DbSet<OrderItem>? OrderItems{ get; set; }
     }
 }

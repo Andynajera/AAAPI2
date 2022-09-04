@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\API2\\API2.csproj": {}
+    "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\AAAPI2\\API2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\API2\\API2.csproj": {
+    "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\AAAPI2\\API2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\API2\\API2.csproj",
+        "projectUniqueName": "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\AAAPI2\\API2.csproj",
         "projectName": "API2",
-        "projectPath": "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\API2\\API2.csproj",
+        "projectPath": "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\AAAPI2\\API2.csproj",
         "packagesPath": "C:\\Users\\Andrea\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\API2\\obj\\",
+        "outputPath": "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\AAAPI2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andrea\\AppData\\Roaming\\NuGet\\NuGet.Config"

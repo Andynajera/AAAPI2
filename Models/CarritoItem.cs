@@ -1,11 +1,11 @@
 
-namespace CarritItem
+namespace Models
 {
 
 
-public class CarritoItems {
+public class CarritoItem {
     public int id {get; set;}
-    public string? cantidad {get; set;}
-    
+    public int precioTotal {get; set;}
+    public int productId {get; set;}
     }
 }

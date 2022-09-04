@@ -1,12 +1,13 @@
 
-namespace OrderItem
+namespace Models
 {
 
 
-public class OrderItems {
+public class OrderItem {
     public int id {get; set;}
+    public int productId {get; set;}
     public int cantidad {get; set;}
-    public int IdOrder {get; set;}
+   
     
     }
 }

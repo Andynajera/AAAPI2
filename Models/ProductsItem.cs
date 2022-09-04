@@ -1,7 +1,7 @@
 
-namespace Product
+namespace Models
 {
-public class ProductItems {
+public class ProductItem {
     public int id { get; set; }
     public string? name { get; set; }
     public string? category { get; set; }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MmJNjBJ1f7AJuBRhmYHTuhbVCnYIekXI4gTEfLjTNUVNsz6gFKUR5zj1b2XHwN2mrvFIJYq50WzOzeM8RhResw==",
+  "dgSpecHash": "cJq35IKzhu4IUPUvZH5qrhIWmp/+nXAS44+Zh9lNeiTDm1cpCchV+3IXtK5Htyq4eJEU1iHNhrL8E9MJocvsDg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\API2\\API2.csproj",
+  "projectFilePath": "C:\\Users\\Andrea\\Desktop\\AA2EVCliente\\AAAPI2\\API2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andrea\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Andrea\\.nuget\\packages\\microsoft.applicationinsights\\2.16.0\\microsoft.applicationinsights.2.16.0.nupkg.sha512",

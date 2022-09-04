@@ -1,10 +1,9 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Product.Data;
-using Product;
-using OrderItem;
-
-namespace ProductsController;
+using Models;
+using Microsoft.EntityFrameworkCore;
+namespace OrdersController;
 
 
 [ApiController]
@@ -20,57 +19,79 @@ public class OrdersController : ControllerBase
         _context = dataContext;
     }
 
-
+    /// <summary>
+    /// Mostrar todos los productos
+    /// </summary>
+    /// <returns>Todos los productos</returns>
+    /// <response code="200">Devuelve el listado de productos</response>
+    /// <response code="500">Si hay algún error</response>
     [HttpGet]
-    public ActionResult<List<OrderItems>> Get()
+    public ActionResult<List<Order>> Get()
     {
-        List<OrderItems> product = _context.OrdeItem.ToList();
-        return product == null? NoContent()
-            : Ok(product);
+        List<Order> orders = _context.Orders.Include(order=>order.orderItems).ToList();
+        return Ok(orders);
     }
 
-
+    /// <summary>
+    /// añadir productos
+    /// </summary>
+    /// <returns>Todos los productos</returns>
+    /// <response code="201">Se ha creado correctamente</response>
+    /// <response code="500">Si hay algún error</response>
     [HttpPost]
-    public ActionResult<OrderItems> Post([FromBody] OrderItems product)
+    public ActionResult<Order> Post([FromBody] Order order)
     {
-         OrderItems existingOrderItems= _context.OrdeItem.Find(product.id);
-        if (existingOrderItems != null)
-        {
-            return Conflict("Ya existe un elemento ");
-        }
-        _context.OrdeItem.Add(product);
+        order.id=0;
+        _context.Orders.Add(order);
         _context.SaveChanges();
 
-        string resourceUrl = Request.Path.ToString() + "/" + product.id;
-        return Created(resourceUrl, product);
+        string resourceUrl = Request.Path.ToString() + "/" + order.id;
+        return Created(resourceUrl, order);
     }
 
+    /// <summary>
+    ///Actualizar los productos
+    /// </summary>
+    /// <returns>Todos los productos</returns>
+    /// <response code="201">Devuelve el listado de productos</response>
+    /// <response code="500">Si hay algún error</response>
+    
     [HttpPut("{id:int}")]
-    public ActionResult<OrderItems> Update([FromBody] OrderItems product, int id)
+    public ActionResult<Order> Update([FromBody] Order order, int id)
     {
-        OrderItems orderItemToUpdate = _context.OrdeItem.Find(id);
-        if (orderItemToUpdate == null)
+        
+        Order orderToUpdate = _context.Orders.Find(id);
+        if (orderToUpdate == null)
         {
-            return NotFound("Elemento del order no encontrado");
+            return NotFound("La orden no ha sido encontrada");
         }
-        orderItemToUpdate.IdOrder = product.IdOrder;
-        orderItemToUpdate.cantidad = product.cantidad;
+       orderToUpdate.id=id;
+       orderToUpdate.orderItems=order.orderItems;
         _context.SaveChanges();
-        string resourceUrl = Request.Path.ToString() + "/" + product.id;
+        string resourceUrl = Request.Path.ToString();
 
-        return Created(resourceUrl, product);
+        return Created(resourceUrl, orderToUpdate);
     }
+
+    
+       /// <summary>
+    /// Eliminar productos seleccionados
+    /// </summary>
+    /// <returns>Todos los productos</returns>
+    /// <response code="200">Se ha eliminado</response>
+    /// <response code="500">Si hay algún error</response>
+    
         [HttpDelete("{id:int}")]
     public ActionResult Delete(int id)
     {
-        OrderItems orderItemToDelete = _context.OrdeItem.Find(id);
-        if (orderItemToDelete == null)
+        Order orderToDelete = _context.Orders.Where(order=>order.id==id).Include(order=>order.orderItems).FirstOrDefault();
+        if (orderToDelete == null)
         {
-            return NotFound("Elemento del order no encontrado");
+            return NotFound("order no encontrada");
         }
-        _context.OrdeItem.Remove(orderItemToDelete);
+        _context.Orders.Remove(orderToDelete);
         _context.SaveChanges();
-        return Ok(orderItemToDelete);
+        return Ok(orderToDelete);
     }
 
 }
